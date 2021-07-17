@@ -1,8 +1,10 @@
 package com.bank.models;
 
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+
 
 
 public class User {
@@ -13,26 +15,12 @@ public class User {
 	private String userName;
 	private String email;
 	private String password;
-	private List<Account> accountNum;
+	private List<Account> account;
 	
 	public User() {
-		//Creates a number in string form for account
-		accountNum = new ArrayList<Account>(new Random().nextInt(10000)+1000); 
+		account = new ArrayList<Account>(); 
 	}
 	
-
-	public User(int id, String firstName, String lastName, String userName, String email, String password,
-			List<Account> accountNum) {
-		this.id = id;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.userName = userName;
-		this.email = email;
-		this.password = password;
-		this.accountNum = new ArrayList<Account>(new Random().nextInt(10000)+1000);
-	}
-
-
 
 	public User(int id, String firstName, String lastName, String userName, String email, String password) {
 		this.id = id;
@@ -41,14 +29,17 @@ public class User {
 		this.userName = userName;
 		this.email = email;
 		this.password = password;
+		account = new ArrayList<Account>(); 
 	}
 
 
 	public User(String firstName, String lastName, String email, String password) {
 		this.firstName = firstName;
 		this.lastName = lastName;
+		this.userName = firstName + lastName + (new Random().nextInt(9000) + 1000);
 		this.email = email;
 		this.password = password;
+		account = new ArrayList<Account>(); 
 	}
 
 
@@ -101,16 +92,16 @@ public class User {
 	}
 	
 	public List<Account> getAccount() {
-		return accountNum;
+		return account;
 	}
 	
-	public void setAccount(List<Account> accountNum) {
-		this.accountNum = accountNum;
+	public void setAccount(List<Account> account) {
+		this.account = account;
 	}
 	
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", userName=" + userName
-				+ ", email=" + email + ", password=" + password + ", account number=" + accountNum + "]";
+				+ ", email=" + email + ", password=" + password + ", account number=" + account + "]";
 	}
 }//End User Class

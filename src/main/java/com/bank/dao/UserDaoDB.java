@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,7 +39,7 @@ public class UserDaoDB implements UserDao{
 	
 
 	public User getUserByUsername(String userName) {
-User user = new User();
+		User user = new User();
 		
 		try {
 			Connection con = conUtil.getConnection();
@@ -74,7 +73,7 @@ User user = new User();
 		
 		try {
 			Connection con = conUtil.getConnection();
-			String sql = "INSERT INTO users(first_name, last_name, email, username, password) values"
+			String sql = "INSERT INTO users(firstname, lastname, email, username, password) values"
 					+ "(?,?,?,?,?)";
 			PreparedStatement ps = con.prepareStatement(sql);
 			

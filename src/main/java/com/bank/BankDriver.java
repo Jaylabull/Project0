@@ -15,8 +15,8 @@ public class BankDriver {
 		UserDao uDao = new UserDaoDB();
 		UserService uServ = new UserService(uDao);
 	
-	  uServ.signUp("Jay", "Bull", "jb@mail.com", "password");
 		
+		uServ.signUp("userj1212", "namej1212", "un1212j@mail.com", "password");
 	}//End BankDriver Method
 
 }//End BankDriver Class

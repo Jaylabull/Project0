@@ -19,7 +19,6 @@ public class UserService {
 	public User signUp(String first, String last, String email, String password) throws UserNameAlreadyExistsException{
 		User u = new User(first, last, email, password);
 		try {
-	
 			uDao.createUser(u);
 			Logging.logger.info("New user has registered.");
 		} catch(SQLException e) {

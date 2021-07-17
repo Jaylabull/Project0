@@ -1,0 +1,16 @@
+2021-07-17 12:11:24 INFO  Logging:24 - New user has registered.
+2021-07-17 12:14:02 INFO  Logging:24 - New user has registered.
+2021-07-17 12:18:59 INFO  Logging:24 - New user has registered.
+2021-07-17 12:19:15 INFO  Logging:24 - New user has registered.
+2021-07-17 12:21:54 INFO  Logging:24 - New user has registered.
+2021-07-17 12:26:24 WARN  Logging:26 - Username created that already exists in the database.
+2021-07-17 12:26:47 WARN  Logging:26 - Username created that already exists in the database.
+2021-07-17 12:28:53 WARN  Logging:26 - Username created that already exists in the database.
+2021-07-17 12:31:19 WARN  Logging:26 - Username created that already exists in the database.
+2021-07-17 12:32:04 WARN  Logging:26 - Username created that already exists in the database.
+2021-07-17 12:33:34 WARN  Logging:26 - Username created that already exists in the database.
+2021-07-17 12:33:57 WARN  Logging:26 - Username created that already exists in the database.
+2021-07-17 12:44:12 WARN  Logging:25 - Username created that already exists in the database.
+2021-07-17 12:52:40 INFO  Logging:23 - New user has registered.
+2021-07-17 12:53:35 INFO  Logging:23 - New user has registered.
+2021-07-17 12:57:33 INFO  Logging:23 - New user has registered.
