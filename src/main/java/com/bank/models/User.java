@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Random;
 
 
-
 public class User {
 
 	private int id;
@@ -22,18 +21,8 @@ public class User {
 	}
 	
 
-	public User(int id, String firstName, String lastName, String userName, String email, String password) {
+	public User(int id, String firstName, String lastName, String email, String password) {
 		this.id = id;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.userName = userName;
-		this.email = email;
-		this.password = password;
-		account = new ArrayList<Account>(); 
-	}
-
-
-	public User(String firstName, String lastName, String email, String password) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.userName = firstName + lastName + (new Random().nextInt(9000) + 1000);
@@ -42,6 +31,27 @@ public class User {
 		account = new ArrayList<Account>(); 
 	}
 
+
+	public User(String firstName, String lastName, String email, String password) {
+		this.setId(new Random().nextInt(9000) + 1000);
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.userName = firstName + lastName + (new Random().nextInt(9000) + 1000);
+		this.email = email;
+		this.password = password;
+		account = new ArrayList<Account>(); 
+	}
+
+	public User(int id, String firstName, String lastName,String userName, String email, String password) {
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.userName = userName;
+		this.userName = firstName +lastName + (new Random().nextInt(9000)+1000);
+		this.email = email;
+		this.password = password;
+		this.account = new ArrayList<Account>();
+	}
 
 	public int getId() {
 		return id;

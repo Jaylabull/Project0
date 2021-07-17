@@ -13,10 +13,19 @@ public class BankDriver {
 	public static void main(String[] args) {
 	
 		UserDao uDao = new UserDaoDB();
-		UserService uServ = new UserService(uDao);
 	
 		
-		uServ.signUp("userj1212", "namej1212", "un1212j@mail.com", "password");
+
+		
 	}//End BankDriver Method
 
 }//End BankDriver Class
+
+
+
+//TESTING TABLE 
+//uServ.signUp("Jayla", "Bull", "jb@mail.com", "password");
+//System.out.println(uDao.getUserByUsername("JaylaBull5536"));
+//User u = uDao.getUserByUsername("JaylaBull5536");
+//
+//uDao.deleteUser(u);

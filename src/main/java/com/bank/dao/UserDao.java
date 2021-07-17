@@ -17,5 +17,3 @@ public interface UserDao {
 	 void deleteUser(User u);
 }
 
-
-//Changed to abstract class in UserDao > Remove @Override from UserDoaDB methods.
