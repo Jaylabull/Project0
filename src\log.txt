@@ -18,3 +18,10 @@
 2021-07-17 13:07:35 INFO  Logging:23 - New user has registered.
 2021-07-17 16:50:32 INFO  Logging:23 - New user has registered.
 2021-07-17 16:53:08 INFO  Logging:23 - New user has registered.
+2021-07-17 16:59:20 WARN  Logging:38 - User tried loggging in that does not exist.
+2021-07-17 16:59:53 INFO  Logging:23 - New user has registered.
+2021-07-17 17:00:49 INFO  Logging:46 - User was logged in.
+2021-07-17 17:10:45 INFO  Logging:46 - User was logged in.
+2021-07-17 17:12:59 INFO  Logging:46 - User was logged in.
+2021-07-17 18:42:14 INFO  Logging:23 - Your account has been created.
+2021-07-17 18:43:13 INFO  Logging:23 - Your account has been created.
