@@ -2,6 +2,7 @@ package com.bank.models;
 
 import java.sql.Timestamp;
 
+
 public class Transactions {
 
 	private Timestamp timestamp;
@@ -9,8 +10,21 @@ public class Transactions {
 	private String transactionType;
 	private double transAmount;
 	private double accountBal;
-	
+	private double prevTransaction;
 
+
+	public double getPrevTransaction() {
+		return prevTransaction;
+	}
+
+	public void setPrevTransaction(double prevTransaction) {
+		this.prevTransaction = prevTransaction;
+	}
+
+	public Transactions() {
+		
+	}
+	
 	public Transactions(Timestamp timestamp, int accountNum, String transactionType, double transAmount, double accountBal) {
 		this.timestamp = timestamp ;
 		this.accountNum = accountNum;

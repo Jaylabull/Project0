@@ -9,20 +9,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.bank.models.Account;
+import com.bank.models.Transactions;
 import com.bank.models.User;
 import com.bank.utils.ConnectionUtil;
 
 public class AccountDaoDB implements AccountDao{
 	ConnectionUtil conUtil = ConnectionUtil.getConnectionUtil();
 
-	//1
+
 	@Override
 	public List<Account> getAllAccounts() {
 		List<Account> accountList = new ArrayList<Account>();
 		return null;
 	}
 	
-//2
+
 	@Override
 	public Account getAccountByUser(String user) {
 		List<Account> accountList = new ArrayList<Account>();
@@ -47,7 +48,7 @@ public class AccountDaoDB implements AccountDao{
 		}
 		return null;
 	}
-//3
+
 	@Override
 	public void createAccount(Account a) throws SQLException {
 		try {
@@ -87,5 +88,24 @@ public class AccountDaoDB implements AccountDao{
 		
 	}
 
+
+	@Override
+	public void updateAccount(Account a) throws SQLException {
+		try {	
+			Connection con = conUtil.getConnection();
+			String sql = "UPDATE * FROM accounts WHERE transactions.account_balance =?";
+			PreparedStatement ps = con.prepareStatement(sql);
+			
+			ps.setDouble(1, a.getAccountNum());
+			
+			ps.execute();
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+	}
+		
+	
+	
 	
 }//End AccountUserDao Class
