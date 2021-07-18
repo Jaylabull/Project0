@@ -1,5 +1,6 @@
 package com.bank.models;
 
+import java.util.List;
 import java.util.Random;
 
 public class Account {
@@ -7,7 +8,8 @@ public class Account {
 	private int accountNum;
 	private int customerID;
 	private double startingBal;
-	private String accountType;
+	private String accountType;	
+	private List<Transactions> transactions;
 	
 	public Account(int customerID, double startingBal, String accountType) {
 		this.setAccountNum(new Random().nextInt(100000) + 100000);

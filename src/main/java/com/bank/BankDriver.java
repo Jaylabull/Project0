@@ -99,7 +99,7 @@ public class BankDriver {
 //					 System.out.println("Please enter your content below: ");
 //					 String content = in.nextLine();
 //					 pServ.addPost(u.getId(), u.getId(), content);
-//					 System.out.println("Post was recevied, are you finished? Press 1 for yes,"
+//					 System.out.println("Post was received, are you finished? Press 1 for yes,"
 //					 		+ " press 2 for no.");
 //					 choice = Integer.parseInt(in.nextLine());
 //					 done = (choice == 1) ? true : false;

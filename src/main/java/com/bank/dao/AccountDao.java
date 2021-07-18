@@ -13,7 +13,6 @@ public interface AccountDao {
 //	3	
 	 void createAccount(Account a) throws SQLException;
 	
-//	 void updateCustomer(Account a);
 //	4	
 	 void deleteAccount(Account a);
 	
