@@ -1,5 +1,6 @@
 package com.bank;
 
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -19,13 +20,20 @@ public class BankDriver {
 	private static UserService uServ = new UserService(uDao);
 	private static AccountDao aDao = new AccountDaoDB();
 	private static AccountServices aServ = new AccountServices(aDao);
-	Account a;
+	static Account a;
 	
-	public static void main(String[] args) {
-	
-
+	public static void main(String[] args) throws SQLException {
+		uDao.getUserByUsername("JaylaBull7427");
+		Account u = new Account();
+		aDao.viewBalance(u);
+/*
 		Scanner in = new Scanner(System.in);
+		System.out.println("********************");
+		System.out.println();
 		System.out.println("Welcome to J&B Bank!");
+		System.out.println();
+		System.out.println("********************");
+		
 		//Boolean used to control loop
 		boolean done = false;
 		
@@ -34,12 +42,12 @@ public class BankDriver {
 		while (!done) {
 			//To Sign up or sign in
 			if (u == null) {
-				
-				System.out.println("To Login Press 1. ");
-				System.out.println("To Signup: Press 2.");
+				System.out.println("What would you like to do?\n"
+						+ "1. LOGIN\n"
+						+ "2. SIGNUP");
 			
 				int choice = Integer.parseInt(in.nextLine());
-				if(choice == 1) {
+				if(choice == 1) {//1. LOGIN
 					
 					System.out.println("Please enter your username: ");
 					String username = in.nextLine();
@@ -48,14 +56,15 @@ public class BankDriver {
 					
 					try {
 						u = uServ.signIn(username, password);
-						System.out.println("Welcome " + u.getFirstName());
+						System.out.println("\n");
+						System.out.println("Welcome " + u.getFirstName() + "!");
 						//Add switch for customer options: ie. view balance, create account
 						
 					} catch (Exception e) {
 						System.out.println("Username or password was incorrect. Goodbye");
 						done = true;
 					}
-				}else {
+				}else {//2. SIGNUP
 						System.out.print("Please enter your first name: ");
 						String first = in.nextLine();
 						System.out.print("Please enter your last name: ");
@@ -73,48 +82,66 @@ public class BankDriver {
 							done = true;
 						}
 					}
-			}
-		
-			//Create checking or savings account (with accountType)
+			}//End SignIn or SignUp
+	
+			//Customer options
 			else {
-				System.out.println("To logout press 1, to create an savings or checking account press 2");
-				
+				System.out.println("What would you like to do?\n");
+				System.out.println("1. View Account Balance\n"
+						+ "2. Create Account\n"
+						+ "3. Make A Deposit\n"
+						+ "4. Make A withdrawal\n"
+						+ "5. Make A Transfer\n"
+						+ "6. Logout");
 				int choice = Integer.parseInt(in.nextLine());
-				//If user chooses 1, we will show them the list of post
-				if(choice == 1) {
-					
-					List<Account> accountList = null;
-					
-					for(Account account: accountList) {
-						System.out.println(account.getAccountNum() + ":");
-						System.out.println(account.getAccountType());
-						System.out.println();
+				//Switch statement for customer options
+				switch(choice) {
+				
+					case 1:
+						
+						System.out.println("Your current balance for your account is $: " + aDao.viewBalance(u));
+						break;
+					case 2:
+						//create account method
+						break;
+					case 3:
+						//make deposit method
+						break;
+					case 4:
+						//make withdrawal method
+						break;
+					case 5:
+						//make transfer method
+						break;
+					case 6:
+						//logout
+					default:
+						System.out.println("Sorry, this is not a valid choice.");
+				}//End switch statement
+				
+//				if(choice == 1) {
+//					
+//					List<Account> accountList = null;
+//					
+//					for(Account account: accountList) {
+//						System.out.println(account.getAccountNum() + ":");
+//						System.out.println(account.getAccountType());
+//						System.out.println();
 					}
-					System.out.println("Are you finished? Press 1 for yes, press 2 for no.");
-					choice = Integer.parseInt(in.nextLine());
-					done = (choice ==1) ? true : false;
+//					System.out.println("Are you finished? Press 1 for yes, press 2 for no.");
 					
-			}
-				else {
-//					 System.out.println("Please enter your content below: ");
-//					 String content = in.nextLine();
-//					 pServ.addPost(u.getId(), u.getId(), content);
-//					 System.out.println("Post was received, are you finished? Press 1 for yes,"
-//					 		+ " press 2 for no.");
-//					 choice = Integer.parseInt(in.nextLine());
-//					 done = (choice == 1) ? true : false;
 					
-				}
-			
-
-		}//End While loop
+			}//End While loop
+				
 		System.out.println("Goodbye.");
 		in.close();
-		}
+	*/
+		}//End Main Method
 		
-	}//End BankDriver Method
+	
+	}//End BankDriver Class
 
-}//End BankDriver Class
+
 
 
 
@@ -133,3 +160,8 @@ public class BankDriver {
 //uServ.signUp("Jayla", "Bull", "jb@mail.com", "password");
 
 //a = aServ.createAccount(4497, 50, "CHECKING");
+
+
+
+
+

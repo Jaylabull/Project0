@@ -11,11 +11,9 @@ public interface TransactionsDao {
 	 List<Transactions> getAllTransactions();
 	
 	 Transactions getTransactionByUser(String user);
-
-	void logTransaction(Transactions t) throws SQLException ;
-	
-//	 void viewBalance(Transactions t) throws SQLException;
-//	 
+//Change method?
+//	void logTransaction(Transactions t) throws SQLException ;
+	 
 //	 void makeWithdrawl(Transactions t) throws SQLException;
 
 }

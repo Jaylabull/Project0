@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.bank.models.Account;
 import com.bank.models.User;
 import com.bank.utils.ConnectionUtil;
 
@@ -135,5 +136,7 @@ public class UserDaoDB implements UserDao{
 		}
 				
 	}
+	
+	
 	
 }//End UserDaoDB

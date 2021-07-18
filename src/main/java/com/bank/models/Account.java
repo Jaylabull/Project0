@@ -7,23 +7,28 @@ public class Account {
 
 	private int accountNum;
 	private int customerID;
-	private double startingBal;
+	private double currentBal;
 	private String accountType;	
 	private List<Transactions> transactions;
 	
-	public Account(int customerID, double startingBal, String accountType) {
+	public Account() {
+		
+	}
+	
+	public Account(int customerID, double currentBal, String accountType) {
 		this.setAccountNum(new Random().nextInt(100000) + 100000);
 		this.customerID = customerID;
-		this.startingBal = startingBal;
+		this.currentBal = currentBal;
 		this.accountType = accountType;
 	}
 	
-	public Account(int accountNum, int customerID, double startingBal, String accountType) {
+	public Account(int accountNum, int customerID, double currentBal, String accountType) {
 		this.accountNum = accountNum;
 		this.customerID = customerID;
-		this.startingBal = startingBal;
+		this.currentBal = currentBal;
 		this.accountType = accountType;
 	}
+
 
 	public int getAccountNum() {
 		return accountNum;
@@ -41,14 +46,15 @@ public class Account {
 		this.customerID = customerID;
 	}
 	
-	public double getStartingBal() {
-		return startingBal;
-	}
 	
-	public void setStartingBal(double startingBal) {
-		this.startingBal = startingBal;
+	public double getCurrentBal() {
+		return currentBal;
 	}
-	
+
+	public void setCurrentBal(double currentBal) {
+		this.currentBal = currentBal;
+	}
+
 	public String getAccountType() {
 		return accountType;
 	}
@@ -56,13 +62,22 @@ public class Account {
 	public void setAccountType(String accountType) {
 		this.accountType = accountType;
 	}
+
+	public Account(int accountNum, int customerID, double currentBal, String accountType,
+			List<Transactions> transactions) {
+		super();
+		this.accountNum = accountNum;
+		this.customerID = customerID;
+		this.currentBal = currentBal;
+		this.accountType = accountType;
+		this.transactions = transactions;
+	}
 	
 	@Override
 	public String toString() {
-		return "Account [accountNum=" + accountNum + ", customerID=" + customerID + ", startingBal=" + startingBal
-				+ ", accountType=" + accountType + "]";
-	}	
-
-
+		return "Account [accountNum=" + accountNum + ", customerID=" + customerID + ", currentBal=" + currentBal
+				+ ", accountType=" + accountType + ", transactions=" + transactions + "]";
+	}
+		
 
 }//End Account Class
