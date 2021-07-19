@@ -1,6 +1,7 @@
 package com.bank;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -23,9 +24,9 @@ public class BankDriver {
 	static Account a;
 	
 	public static void main(String[] args) throws SQLException {
-		uDao.getUserByUsername("JaylaBull7427");
-		Account u = new Account();
-		aDao.viewBalance(u);
+		
+		aDao.getAccountByUser(a);
+		
 /*
 		Scanner in = new Scanner(System.in);
 		System.out.println("********************");

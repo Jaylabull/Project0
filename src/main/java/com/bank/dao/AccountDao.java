@@ -1,6 +1,7 @@
 package com.bank.dao;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.bank.models.Account;
@@ -17,10 +18,6 @@ public interface AccountDao {
 
 	 void updateAccount(Account a) throws SQLException;
 
-//	Account viewBalance(User u) throws SQLException;
-	
-	 Account viewBalance(Account a) throws SQLException;
-	 
-	 Account getAccountByUser(String user);
+	Account getAccountByUser(Account u);
 	
 }

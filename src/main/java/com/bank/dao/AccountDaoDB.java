@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,24 +26,34 @@ public class AccountDaoDB implements AccountDao{
 	}
 	
 
+
+
 @Override
-	public Account getAccountByUser(String user) {
+	public Account getAccountByUser(Account u) {
 		List<Account> accountList = new ArrayList<Account>();
 		
 		try {
 			Connection con = conUtil.getConnection();
 			con.setAutoCommit(false);
-			String sql = "SELECT * FROM accounts WHERE customer_id =" + user + "'";
+			String sql = "{?=call get_user_accounts(?)}";
 			
-			PreparedStatement ps = con.prepareStatement(sql);
-			ResultSet rs = ps.executeQuery();
-	
-			while(rs.next()) {
-				accountList.add(new Account(rs.getInt(1), rs.getInt(2), rs.getDouble(3), rs.getString(4)));
-			}
 			CallableStatement cs = con.prepareCall(sql);
 			
-			return (Account) accountList;
+			cs.registerOutParameter(1, Types.OTHER);
+			cs.setInt(2, u.getCustomerID());
+			
+			cs.execute();
+			
+			ResultSet rs = (ResultSet) cs.getObject(1);
+			while(rs.next()) {
+				
+				Account a = new Account(rs.getInt(1) ,rs.getInt(2), rs.getInt(3), rs.getString(4));
+				accountList.add(a);
+			}
+			u.setAccountNum(accountList);
+			
+			con.setAutoCommit(true);
+			return u;
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -50,28 +61,28 @@ public class AccountDaoDB implements AccountDao{
 		return null;
 	}
 
-	@Override
-	public void createAccount(Account a) throws SQLException {
-		try {
-			Connection con = conUtil.getConnection();
-			
-			String sql =  "INSERT INTO accounts(account_number, customer_id, current_balance, account_type) values"
-					+ "(?,?,?,?)";;
-			PreparedStatement ps = con.prepareStatement(sql);
-			
-			ps.setInt(1, a.getAccountNum());
-			ps.setInt(2, a.getCustomerID());
-			ps.setDouble(3, a.getCurrentBal());
-			ps.setString(4, a.getAccountType());
+@Override
+public void createAccount(Account a) throws SQLException {
+	try {
+		Connection con = conUtil.getConnection();
 		
-			ps.execute();
-					
-		} catch(SQLException e) {
-			e.printStackTrace();
-		}
+		String sql =  "INSERT INTO accounts(account_number, customer_id, current_balance, account_type) values"
+				+ "(?,?,?,?)";;
+		PreparedStatement ps = con.prepareStatement(sql);
 		
+		ps.setInt(1, a.getAccountNum());
+		ps.setInt(2, a.getCustomerID());
+		ps.setDouble(3, a.getCurrentBal());
+		ps.setString(4, a.getAccountType());
+	
+		ps.execute();
+				
+	} catch(SQLException e) {
+		e.printStackTrace();
 	}
-//4
+	
+}
+
 	@Override
 	public void deleteAccount(Account a) {
 		try {	
@@ -105,36 +116,5 @@ public class AccountDaoDB implements AccountDao{
 			e.printStackTrace();
 		}
 	}
-
-
-	public Account viewBalance(Account a) throws SQLException {
-			
-		Account acct = new Account();
-		
-		try {
-			Connection con = conUtil.getConnection();
-			
-			String sql = "SELECT current_balance FROM accounts WHERE current_balance = ?";
-			PreparedStatement ps = con.prepareStatement(sql);
-			ResultSet rs = ps.executeQuery();
-			
-			while(rs.next()) {
-				
-				acct.setCurrentBal(rs.getDouble(3));
-		
-			}
-			return acct;
-			
-		} catch(SQLException e) {
-			
-			e.printStackTrace();
-			
-		}
-		
-		return acct;
-	
-		
-	}
-
 
 }//End AccountUserDao Class

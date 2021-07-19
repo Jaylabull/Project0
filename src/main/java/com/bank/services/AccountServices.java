@@ -16,7 +16,7 @@ private AccountDao aDao;
 		this.aDao = a;
 	}
 	
-	public Account createAccount( int customerID, double balance, String acctType) throws UserNotFoundException {
+	public Account createAccount( int customerID, int balance, String acctType) throws UserNotFoundException {
 		Account a = new Account(customerID, balance, acctType);
 		
 		try {

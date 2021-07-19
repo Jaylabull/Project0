@@ -7,7 +7,7 @@ public class Account {
 
 	private int accountNum;
 	private int customerID;
-	private double currentBal;
+	private int currentBal;
 	private String accountType;	
 	private List<Transactions> transactions;
 	
@@ -15,14 +15,14 @@ public class Account {
 		
 	}
 	
-	public Account(int customerID, double currentBal, String accountType) {
+	public Account(int customerID, int currentBal, String accountType) {
 		this.setAccountNum(new Random().nextInt(100000) + 100000);
 		this.customerID = customerID;
 		this.currentBal = currentBal;
 		this.accountType = accountType;
 	}
 	
-	public Account(int accountNum, int customerID, double currentBal, String accountType) {
+	public Account(int accountNum, int customerID, int currentBal, String accountType) {
 		this.accountNum = accountNum;
 		this.customerID = customerID;
 		this.currentBal = currentBal;
@@ -51,7 +51,7 @@ public class Account {
 		return currentBal;
 	}
 
-	public void setCurrentBal(double currentBal) {
+	public void setCurrentBal(int currentBal) {
 		this.currentBal = currentBal;
 	}
 
@@ -63,7 +63,7 @@ public class Account {
 		this.accountType = accountType;
 	}
 
-	public Account(int accountNum, int customerID, double currentBal, String accountType,
+	public Account(int accountNum, int customerID, int currentBal, String accountType,
 			List<Transactions> transactions) {
 		super();
 		this.accountNum = accountNum;
@@ -77,6 +77,10 @@ public class Account {
 	public String toString() {
 		return "Account [accountNum=" + accountNum + ", customerID=" + customerID + ", currentBal=" + currentBal
 				+ ", accountType=" + accountType + ", transactions=" + transactions + "]";
+	}
+
+	public void setAccountNum(List<Account> accountList) {
+		
 	}
 		
 
