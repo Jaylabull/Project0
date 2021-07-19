@@ -18,6 +18,8 @@ public interface AccountDao {
 
 	 void updateAccount(Account a) throws SQLException;
 
-	Account getAccountByUser(Account u);
+//	Account getAccountByUser(Account a);
+
+	Account getAccountByUser(User u);
 	
 }

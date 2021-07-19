@@ -25,9 +25,6 @@ public class BankDriver {
 	
 	public static void main(String[] args) throws SQLException {
 		
-		aDao.getAccountByUser(a);
-		
-/*
 		Scanner in = new Scanner(System.in);
 		System.out.println("********************");
 		System.out.println();
@@ -100,7 +97,7 @@ public class BankDriver {
 				
 					case 1:
 						
-						System.out.println("Your current balance for your account is $: " + aDao.viewBalance(u));
+						System.out.println("Your current balance for your account is: $ " + aDao.getAccountByUser(u).getCurrentBal());
 						break;
 					case 2:
 						//create account method
@@ -136,7 +133,6 @@ public class BankDriver {
 				
 		System.out.println("Goodbye.");
 		in.close();
-	*/
 		}//End Main Method
 		
 	
@@ -164,5 +160,11 @@ public class BankDriver {
 
 
 
+//TESTING getAccountByUser() from aDao -> returns null
+//		Account ac = new Account();
+//		
+//		aDao.getAccountByUser(ac);
+//	
+//		System.out.println(aDao.getAllAccounts());
 
 

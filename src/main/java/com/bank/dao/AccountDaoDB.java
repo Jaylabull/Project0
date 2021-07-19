@@ -27,9 +27,8 @@ public class AccountDaoDB implements AccountDao{
 	
 
 
-
 @Override
-	public Account getAccountByUser(Account u) {
+	public Account getAccountByUser(User u) {
 		List<Account> accountList = new ArrayList<Account>();
 		
 		try {
@@ -40,20 +39,20 @@ public class AccountDaoDB implements AccountDao{
 			CallableStatement cs = con.prepareCall(sql);
 			
 			cs.registerOutParameter(1, Types.OTHER);
-			cs.setInt(2, u.getCustomerID());
+			cs.setInt(2, u.getId());
 			
 			cs.execute();
 			
 			ResultSet rs = (ResultSet) cs.getObject(1);
 			while(rs.next()) {
 				
-				Account a = new Account(rs.getInt(1) ,rs.getInt(2), rs.getInt(3), rs.getString(4));
-				accountList.add(a);
+				Account ac = new Account(rs.getInt(1) ,rs.getInt(2), rs.getInt(3), rs.getString(4));
+				accountList.add(0, ac);;
 			}
-			u.setAccountNum(accountList);
-			
+//			u.setAccountNum(accountList);
+			u.setAccount(accountList);
 			con.setAutoCommit(true);
-			return u;
+			return (Account) accountList.get(1);
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
