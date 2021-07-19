@@ -25,6 +25,7 @@ public class BankDriver {
 	
 	public static void main(String[] args) throws SQLException {
 		
+	
 		Scanner in = new Scanner(System.in);
 		System.out.println("********************");
 		System.out.println();
@@ -40,6 +41,7 @@ public class BankDriver {
 		while (!done) {
 			//To Sign up or sign in
 			if (u == null) {
+				System.out.println("\n");
 				System.out.println("What would you like to do?\n"
 						+ "1. LOGIN\n"
 						+ "2. SIGNUP");
@@ -94,13 +96,39 @@ public class BankDriver {
 				int choice = Integer.parseInt(in.nextLine());
 				//Switch statement for customer options
 				switch(choice) {
-				
 					case 1:
-						
+						//View balance
 						System.out.println("Your current balance for your account is: $ " + aDao.getAccountByUser(u).getCurrentBal());
 						break;
 					case 2:
-						//create account method
+						//Create an account 
+						System.out.println("Please enter your Customer ID");
+						System.out.println("Your Customer ID is: " + u.getId() + ".");
+						int id = Integer.parseInt(in.nextLine());
+						System.out.println("The minimium balance to start an account is $50. "
+								+ "Please enter a balance of at least $50.");
+						int balance = Integer.parseInt(in.nextLine());
+						System.out.println("Please enter the type of account you would like to create:\nCHECKINGS"
+								+ " or\n SAVINGS");
+						String acctType = in.nextLine().toUpperCase();
+							
+							if(!"CHECKINGS".equals(acctType) && !"SAVINGS".equals(acctType)) {
+								System.out.println("This is not a valid input, please enter checkings or savings");
+								continue;
+							}
+						
+						try {
+							
+							a = aServ.createAccount(id, balance, acctType);
+							System.out.println("Your " + a.getAccountType().toLowerCase() + " account has been created! Your account number is "
+									 + a.getAccountNum());	
+						} catch (Exception e) {
+							
+							System.out.println("Sorry, we could not process you request.");
+							System.out.println("Please try again later.");
+							done = true;
+
+						}
 						break;
 					case 3:
 						//make deposit method
@@ -167,4 +195,8 @@ public class BankDriver {
 //	
 //		System.out.println(aDao.getAllAccounts());
 
+//TESTING createAccount() in aServ
+//Account ac = new Account();
+//
+//aServ.createAccount(4497, 50, "SAVINGS");
 

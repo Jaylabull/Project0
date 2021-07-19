@@ -71,7 +71,7 @@ public void createAccount(Account a) throws SQLException {
 		
 		ps.setInt(1, a.getAccountNum());
 		ps.setInt(2, a.getCustomerID());
-		ps.setDouble(3, a.getCurrentBal());
+		ps.setInt(3, (int) a.getCurrentBal());
 		ps.setString(4, a.getAccountType());
 	
 		ps.execute();
@@ -81,6 +81,7 @@ public void createAccount(Account a) throws SQLException {
 	}
 	
 }
+
 
 	@Override
 	public void deleteAccount(Account a) {
@@ -115,5 +116,6 @@ public void createAccount(Account a) throws SQLException {
 			e.printStackTrace();
 		}
 	}
+
 
 }//End AccountUserDao Class
