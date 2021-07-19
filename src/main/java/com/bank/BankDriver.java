@@ -105,30 +105,40 @@ public class BankDriver {
 						System.out.println("Please enter your Customer ID");
 						System.out.println("Your Customer ID is: " + u.getId() + ".");
 						int id = Integer.parseInt(in.nextLine());
-						System.out.println("The minimium balance to start an account is $50. "
-								+ "Please enter a balance of at least $50.");
-						int balance = Integer.parseInt(in.nextLine());
 						System.out.println("Please enter the type of account you would like to create:\nCHECKINGS"
 								+ " or\n SAVINGS");
-						String acctType = in.nextLine().toUpperCase();
+							String acctType = in.nextLine().toUpperCase();
 							
-							if(!"CHECKINGS".equals(acctType) && !"SAVINGS".equals(acctType)) {
+								if(!"CHECKINGS".equals(acctType) && !"SAVINGS".equals(acctType)) {
+									
 								System.out.println("This is not a valid input, please enter checkings or savings");
 								continue;
+								
 							}
+						System.out.println("The minimium balance to start an account is $50. "
+									+ "Please enter a balance of at least $50.");
+							int balance = Integer.parseInt(in.nextLine());
 						
-						try {
+					
 							
-							a = aServ.createAccount(id, balance, acctType);
-							System.out.println("Your " + a.getAccountType().toLowerCase() + " account has been created! Your account number is "
-									 + a.getAccountNum());	
-						} catch (Exception e) {
+							if (balance < 50) {
+								System.out.println("You need at least $50 to make a new account."
+										+ "Please enter a new amount.");
+							}else {
+								
+								try {
+									
+									a = aServ.createAccount(id, balance, acctType);
+									System.out.println("Your " + a.getAccountType().toLowerCase() + " account has been created! Your account number is "
+											 + a.getAccountNum());	
+									
+								}catch (Exception e) {
 							
-							System.out.println("Sorry, we could not process you request.");
-							System.out.println("Please try again later.");
-							done = true;
-
-						}
+								System.out.println("Sorry, we could not process you request.");
+								System.out.println("Please try again later.");
+								done = true;
+								}
+							}
 						break;
 					case 3:
 						//make deposit method
