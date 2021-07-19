@@ -7,11 +7,15 @@ import java.util.Scanner;
 
 import com.bank.dao.AccountDao;
 import com.bank.dao.AccountDaoDB;
+import com.bank.dao.TransactionsDao;
+import com.bank.dao.TransactionsDaoDB;
 import com.bank.dao.UserDao;
 import com.bank.dao.UserDaoDB;
 import com.bank.models.Account;
+import com.bank.models.Transactions;
 import com.bank.models.User;
 import com.bank.services.AccountServices;
+import com.bank.services.TransactionServices;
 import com.bank.services.UserService;
 
 
@@ -21,7 +25,11 @@ public class BankDriver {
 	private static UserService uServ = new UserService(uDao);
 	private static AccountDao aDao = new AccountDaoDB();
 	private static AccountServices aServ = new AccountServices(aDao);
+	private static TransactionsDao tDao = new TransactionsDaoDB();
+	private static TransactionServices tServ = new TransactionServices(tDao);
 	static Account a;
+	static User u;
+	static Transactions t;
 	
 	public static void main(String[] args) throws SQLException {
 		
@@ -141,11 +149,19 @@ public class BankDriver {
 							}
 						break;
 					case 3:
-						//make deposit method
+						//Make a deposit
+						System.out.println("Please enter your Account Number for Deposit: ");
+						System.out.println("Accounts: " + aDao.getAccountByUser(u).getAccountNum());
+						int acctNum = Integer.parseInt(in.nextLine());
+						System.out.println("Please enter an amount you would like to deposit: ");
+						int deposit = Integer.parseInt(in.nextLine());
+						System.out.println("Deposit amount: $" + deposit);
+						tServ.makeDeposit(acctNum, deposit);
+						System.out.println("Your new account balance is: $" + aDao.getAccountByUser(u).getCurrentBal() + "\n");
 						break;
 					case 4:
 						//make withdrawal method
-						break;
+						break; 
 					case 5:
 						//make transfer method
 						break;

@@ -12,17 +12,14 @@ public class Transactions {
 	private double accountBal;
 	private double prevTransaction;
 
-
-	public double getPrevTransaction() {
-		return prevTransaction;
-	}
-
-	public void setPrevTransaction(double prevTransaction) {
-		this.prevTransaction = prevTransaction;
-	}
-
+	
 	public Transactions() {
 		
+	}
+	
+	public Transactions(int accountNum, double transAmount) {
+		this.accountNum = accountNum;
+		this.transAmount = transAmount;
 	}
 	
 	public Transactions(Timestamp timestamp, int accountNum, String transactionType, double transAmount, double accountBal) {
@@ -78,6 +75,14 @@ public class Transactions {
 
 	public void setTransactionType(String transactionType) {
 		this.transactionType = transactionType;
+	}
+	
+	public double getPrevTransaction() {
+		return prevTransaction;
+	}
+
+	public void setPrevTransaction(double prevTransaction) {
+		this.prevTransaction = prevTransaction;
 	}
 
 

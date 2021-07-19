@@ -47,7 +47,7 @@ public class AccountDaoDB implements AccountDao{
 			while(rs.next()) {
 				
 				Account ac = new Account(rs.getInt(1) ,rs.getInt(2), rs.getInt(3), rs.getString(4));
-				accountList.add(0, ac);;
+				accountList.add(0, ac);
 			}
 //			u.setAccountNum(accountList);
 			u.setAccount(accountList);

@@ -14,6 +14,8 @@ public interface TransactionsDao {
 
 	 //makeDeposit 
 	 
+	 public Transactions makeDeposit(int accountNum, double deposit);
+	 
 	 //make withdrawal
 	 
 	 //make transfer b/t accounts

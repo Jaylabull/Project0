@@ -50,11 +50,11 @@ public class TransactionsDaoDB implements TransactionsDao{
 			
 			while(rs.next()) {
 				
-				trans.setTimestamp(rs.getTimestamp(1));
-				trans.setAccountNum(rs.getInt(2));
-				trans.setTransAmount(rs.getDouble(3));
+				trans.setTimestamp(rs.getTimestamp(2));
+				trans.setAccountNum(rs.getInt(3));
 				trans.setTransactionType(rs.getString(4));
-				trans.setAccountBal(rs.getDouble(5));
+				trans.setTransAmount(rs.getDouble(5));
+				trans.setAccountBal(rs.getDouble(6));
 				
 			}
 			return trans;
@@ -64,6 +64,19 @@ public class TransactionsDaoDB implements TransactionsDao{
 			e.printStackTrace();
 			
 		}
+		
+		return null;
+	}
+
+	@Override
+	public Transactions makeDeposit(int accountNum, double deposit) {
+		Transactions trans = new Transactions(accountNum , deposit);
+
+		double balance = 
+			accountNum = trans.getAccountNum();
+			balance = balance += deposit;
+//			deposit = trans.getPrevTransaction();
+		
 		
 		return null;
 	}	
