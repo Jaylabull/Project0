@@ -34,25 +34,24 @@ private static AccountDao aDao;
 		return a;
 	}
 	
-	public static void makeDeposit(int uID, int deposit) throws InvalidTransactionException {
-		TransactionServices tServ = new TransactionServices();
-		
-		Account a = new Account();
-		
-		a.setCurrentBal(a.getCurrentBal() + deposit);
-		
-//		try {
+//	public static void makeDeposit(int uID, int deposit) throws InvalidTransactionException {
 //		
-//
-////			aDao.updateAccount(a);
-////			Transactions t = new Transactions(a.getAccountNum(), deposit);
-////			tServ.logTransaction(t);
-//			
-//		}catch(SQLException e) {
-//			e.printStackTrace();
-//			throw new InvalidTransactionException();
-//		}
-	}
+//		Account a = new Account();
+//		
+//		a.setCurrentBal(a.getCurrentBal() + deposit);
+//		
+////		try {
+////		
+////
+//////			aDao.updateAccount(a);
+//////			Transactions t = new Transactions(a.getAccountNum(), deposit);
+//////			tServ.logTransaction(t);
+////			
+////		}catch(SQLException e) {
+////			e.printStackTrace();
+////			throw new InvalidTransactionException();
+////		}
+//	}
 	
 	
 }

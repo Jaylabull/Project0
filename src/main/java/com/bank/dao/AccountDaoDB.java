@@ -9,6 +9,7 @@ import java.sql.Statement;
 import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import com.bank.logging.Logging;
 import com.bank.models.Account;
@@ -17,6 +18,7 @@ import com.bank.models.User;
 import com.bank.utils.ConnectionUtil;
 
 public class AccountDaoDB implements AccountDao{
+	Scanner in = new Scanner(System.in);
 	ConnectionUtil conUtil = ConnectionUtil.getConnectionUtil();
 
 
@@ -49,6 +51,7 @@ public class AccountDaoDB implements AccountDao{
 				
 				Account ac = new Account(rs.getInt(1) ,rs.getInt(2), rs.getInt(3), rs.getString(4));
 				accountList.add(0, ac);
+//				System.out.println(accountList);
 			}
 			u.setAccount(accountList);
 			con.setAutoCommit(true);
@@ -71,7 +74,7 @@ public void createAccount(Account a) throws SQLException {
 		
 		ps.setInt(1, a.getAccountNum());
 		ps.setInt(2, a.getCustomerID());
-		ps.setInt(3, (int) a.getCurrentBal());
+		ps.setInt(3, a.getCurrentBal());
 		ps.setString(4, a.getAccountType());
 	
 		ps.execute();
@@ -103,15 +106,15 @@ public void createAccount(Account a) throws SQLException {
 
 
 	public void makeDeposit(User u, int deposit) {
-		Account a = new Account();
+		Account a = getAccountByUser(u);
 		try {	
 			Connection con = conUtil.getConnection();
 			
 			String sql = "UPDATE accounts SET current_balance = ? WHERE customer_id =?";
 			PreparedStatement ps = con.prepareStatement(sql);
 			
-			ps.setInt(1, deposit + a.getCurrentBal());
-			ps.setInt(2, a.getCustomerID());
+			ps.setInt(1, a.getCurrentBal() + deposit);
+			ps.setInt(2, u.getId());
 			ps.execute();
 			
 			Logging.logger.info("Your deposit has been processed.");
@@ -129,8 +132,8 @@ public void createAccount(Account a) throws SQLException {
 			String sql = "UPDATE accounts SET current_balance = ? WHERE customer_id =?";
 			PreparedStatement ps = con.prepareStatement(sql);
 			
-			ps.setInt(1, deposit - a.getCurrentBal());
-			ps.setInt(2, a.getCustomerID());
+			ps.setInt(1, a.getCurrentBal() - deposit);
+			ps.setInt(2, u.getId());
 			ps.execute();
 			
 			Logging.logger.info("Your deposit has been processed.");
@@ -140,14 +143,63 @@ public void createAccount(Account a) throws SQLException {
 		}
 	}
 	
-	//transfer method
-//	public void transfer(String acct1, String acct2, int transferAmt) {
-//		AccountDaoDB a = new AccountDaoDB();
-//		Account ac = null;
-//		acct1 = ac.getAccountType();
-//		acct2 = ac.getAccountType();
-//		
-//		
-//	}
+	public void transfer() {
+		
+		System.out.println("Please enter Account number you would like to transfer from: ");
+		int acctNum = in.nextInt();
+		System.out.println("Enter the amount you would like to transfer: ");
+		int transferAmt = in.nextInt();
+		
+		if(transferAmt > 0) {
+			
+			String sql = "SELECT current_balance = ? FROM accounts WHERE account_number =?";
+			Connection con = conUtil.getConnection();
+			try {
+				PreparedStatement ps = con.prepareStatement(sql);
+				ps.setInt(1, acctNum);
+//				ps.setInt(2, transferAmt);
+				ResultSet rs = ps.executeQuery();
+				if(rs.next()) {
+					int acctBalance = rs.getInt("current_balance");
+					
+					if(transferAmt <= acctBalance) {
+						System.out.println("Please enter Account number you would like to transfer to: ");
+						int toAcctNum = in.nextInt();
+						String sql2 = "SELECT current_balance = ? FROM accounts WHERE account_number =?";
+						PreparedStatement ps2 = con.prepareStatement(sql2);
+						ps2.setInt(1, toAcctNum);
+						rs = ps2.executeQuery();
+			
+					if(rs.next()) {
+						String sql3 = "UPDATE accounts SET current_balance = current_balance - ? WHERE account_number =?";
+						PreparedStatement ps3 = con.prepareStatement(sql3);
+						ps3.setInt(1, transferAmt);
+						ps3.setInt(2, acctNum);
+						ps3.executeUpdate();
+						
+						String sql4 = "UPDATE accounts SET current_balance = current_balance + ? WHERE account_number =?";
+						PreparedStatement ps4 = con.prepareStatement(sql4);
+						ps4.setInt(1, transferAmt);
+						ps4.setInt(2, toAcctNum);
+						ps4.executeUpdate();
+						System.out.println("Your transfer has been processed.");
+						
+					}else {
+						System.out.println("The account you want to transfer to does not exist.");
+					}
+				}else {
+					System.out.println("Insufficient funds to process tranfer.");
+				}
+				
+				}else {
+					System.out.println("The account number is inccorrect.");
+				}
+			}catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+	}//End Transfer Method
+
 
 }//End AccountUserDao Class

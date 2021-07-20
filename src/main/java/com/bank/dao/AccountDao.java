@@ -11,6 +11,8 @@ import com.bank.models.User;
 public interface AccountDao {
 
 	 List<Account> getAllAccounts();
+	 
+	 Account getAccountByUser(User u);
 	
 	 void createAccount(Account a) throws SQLException;
 	
@@ -18,7 +20,8 @@ public interface AccountDao {
 
 	 public void makeDeposit(User u, int deposit);
 
-	 Account getAccountByUser(User u);
-
-	
+	 public void makeWithdrawl(User u, int deposit);
+	 
+	 public void transfer();
+	 
 }

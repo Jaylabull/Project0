@@ -111,6 +111,7 @@ public class BankDriver {
 						System.out.println("Please enter your Customer ID");
 						System.out.println("Your Customer ID is: " + u.getId() + ".");
 						int id = Integer.parseInt(in.nextLine());
+						
 						System.out.println("Please enter the type of account you would like to create:\nCHECKINGS"
 								+ " or\n SAVINGS");
 							String acctType = in.nextLine().toUpperCase();
@@ -148,32 +149,32 @@ public class BankDriver {
 					case 3:
 						//Make a deposit
 						System.out.println("Please enter your Account Number for Deposit: ");
+						
 						System.out.println("Accounts: " + aDao.getAccountByUser(u).getAccountNum());
 						System.out.println("Please enter an amount you would like to deposit: ");
 						int deposit = Integer.parseInt(in.nextLine());
+						
 						System.out.println("Deposit amount: $" + deposit);
 						aDao.makeDeposit(u, deposit);
+						
 						System.out.println("Your new account balance is: $" + aDao.getAccountByUser(u).getCurrentBal() + "\n");
 						break;
 					case 4:
 						//make withdrawal method
 						System.out.println("Please enter your Account Number for Deposit: ");
-						System.out.println("Accounts: " + aDao.getAccountByUser(u).getAccountNum());
+//						System.out.println("Accounts: " + aDao.getAccountByUser(u).getAccountNum());
+						
 						System.out.println("Please enter an amount you would like to deposit: ");
 						int withdrawal = Integer.parseInt(in.nextLine());
+						
 						System.out.println("Deposit amount: $" + withdrawal);
 						aDao.makeDeposit(u, withdrawal);
+						
 						System.out.println("Your new account balance is: $" + aDao.getAccountByUser(u).getCurrentBal() + "\n");
 						break;
 					case 5:
-						//make transfer methoD
-						System.out.println("Please enter Account number you would like to transfer from. ");
-						System.out.println("Accounts: " + aDao.getAllAccounts());
-						int actNum = Integer.parseInt(in.nextLine());
-						System.out.println("Please enter which Account you would like to transfer to "
-								+ "(Checkings and Savings)");
-						String transferTo = in.nextLine();
-						
+//						//make transfer method
+						aDao.transfer();
 						break;
 					case 6:
 						//logout
