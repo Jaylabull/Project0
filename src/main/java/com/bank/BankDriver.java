@@ -124,8 +124,7 @@ public class BankDriver {
 						System.out.println("The minimium balance to start an account is $50. "
 									+ "Please enter a balance of at least $50.");
 							int balance = Integer.parseInt(in.nextLine());
-						
-					
+				
 							
 							if (balance < 50) {
 								System.out.println("You need at least $50 to make a new account."
@@ -167,25 +166,24 @@ public class BankDriver {
 						System.out.println("Your new account balance is: $" + aDao.getAccountByUser(u).getCurrentBal() + "\n");
 						break;
 					case 5:
-						//make transfer method
+						//make transfer methoD
+						System.out.println("Please enter Account number you would like to transfer from. ");
+						System.out.println("Accounts: " + aDao.getAllAccounts());
+						int actNum = Integer.parseInt(in.nextLine());
+						System.out.println("Please enter which Account you would like to transfer to "
+								+ "(Checkings and Savings)");
+						String transferTo = in.nextLine();
+						
 						break;
 					case 6:
 						//logout
+						done = true;
+						break;
 					default:
 						System.out.println("Sorry, this is not a valid choice.");
 				}//End switch statement
 				
-//				if(choice == 1) {
-//					
-//					List<Account> accountList = null;
-//					
-//					for(Account account: accountList) {
-//						System.out.println(account.getAccountNum() + ":");
-//						System.out.println(account.getAccountType());
-//						System.out.println();
 					}
-//					System.out.println("Are you finished? Press 1 for yes, press 2 for no.");
-					
 					
 			}//End While loop
 				

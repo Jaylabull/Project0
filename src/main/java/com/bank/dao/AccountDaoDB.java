@@ -139,6 +139,15 @@ public void createAccount(Account a) throws SQLException {
 			e.printStackTrace();
 		}
 	}
-
+	
+	//transfer method
+//	public void transfer(String acct1, String acct2, int transferAmt) {
+//		AccountDaoDB a = new AccountDaoDB();
+//		Account ac = null;
+//		acct1 = ac.getAccountType();
+//		acct2 = ac.getAccountType();
+//		
+//		
+//	}
 
 }//End AccountUserDao Class
