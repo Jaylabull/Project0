@@ -147,6 +147,7 @@ public void createAccount(Account a) throws SQLException {
 		
 		System.out.println("Please enter Account number you would like to transfer from: ");
 		String acctNum = in.nextLine();
+		
 		System.out.println("Enter the amount you would like to transfer: ");
 		int transferAmt = in.nextInt();
 		
@@ -157,6 +158,7 @@ public void createAccount(Account a) throws SQLException {
 			try {
 				PreparedStatement ps = con.prepareStatement(sql);
 				ps.setString(1, acctNum);
+				
 				ResultSet rs = ps.executeQuery();
 				
 				if(rs.next()) {
@@ -166,35 +168,47 @@ public void createAccount(Account a) throws SQLException {
 						
 						System.out.println("Please enter Account number you would like to transfer to: ");
 						String toAcctNum = in.nextLine();
+						
 						String sql2 = "SELECT current_balance FROM accounts WHERE account_number = ?";
 						PreparedStatement ps2 = con.prepareStatement(sql2);
+						
 						ps2.setString(1, toAcctNum);
+						
 						rs = ps2.executeQuery();
 						
 						if(rs.next()) {
-						String sql3 = "UPDATE accounts SET current_balance = ? WHERE account_number = ?";
+							
+						String sql3 = "UPDATE accounts SET current_balance =? WHERE account_number =?";
+						
 						PreparedStatement ps3 = con.prepareStatement(sql3);
 						ps3.setInt(1, acctBalance - transferAmt);
 						ps3.setString(2, acctNum);
+						
 						ps3.executeUpdate();
-						if(rs.next()) {
-						String sql4 = "UPDATE accounts SET current_balance = ? WHERE account_number = ?";
+	
+						String sql4 = "UPDATE accounts SET current_balance =? WHERE account_number = ?";
+						
 						PreparedStatement ps4 = con.prepareStatement(sql4);
 						ps3.setInt(1, acctBalance + transferAmt);
 						ps3.setString(2, toAcctNum);
+						
 						ps3.executeUpdate();
 						
 						System.out.println("Your transfer has been processed.");
-						}
+						
+					
 					}else {
 						System.out.println("The account you want to transfer to does not exist.");
 					}
-				}
-				}
-			}catch (SQLException e) {
-				e.printStackTrace();	
-			}
-
-			}
+					}else {
+						System.out.println("You don't have sufficient funds to make a transfer.");
+					}
+					}else {
+						System.out.println("Please enter the correct account number.");
+					}
+				
+				}catch (SQLException e) {
+				e.printStackTrace();}	
+		}
 	}//End Transfer Method
 }//End AccountUserDao Class
