@@ -1,14 +1,14 @@
 package com.bank.services;
 
-import com.bank.dao.AccountDaoDB;
+
 import com.bank.dao.TransactionsDao;
 import com.bank.logging.Logging;
 import com.bank.models.Transactions;
-import com.bank.models.User;
+
 
 public class TransactionServices {
-
-	private TransactionsDao tDao;
+/*
+	private static TransactionsDao tDao;
 
 	public TransactionServices(TransactionsDao t)  {
 		
@@ -16,13 +16,22 @@ public class TransactionServices {
 		
 	}
 	
-	public Transactions makeDeposit(int accountNum, double deposit) {
-	
+	public TransactionServices() {
+
+	}
+
+	public void logTransaction(Transactions t) {
+		
+		try {
+			tDao.logTransaction(t);
+			Logging.logger.info("Your deposit has been made!");
 			
-			Logging.logger.info("Your deposit had been made!");
-	
-		return null;
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+			Logging.logger.warn("Sorry, could not process your account.");
+		}
 	}
 	
-	
+	*/
 }//End TransactionServices Class

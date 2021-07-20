@@ -1,6 +1,7 @@
 package com.bank.dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -11,6 +12,7 @@ import com.bank.models.Transactions;
 import com.bank.utils.ConnectionUtil;
 
 public class TransactionsDaoDB implements TransactionsDao{
+	/*
 	ConnectionUtil conUtil = ConnectionUtil.getConnectionUtil();
 	
 	@Override
@@ -24,7 +26,7 @@ public class TransactionsDaoDB implements TransactionsDao{
 			ResultSet rs = s.executeQuery(sql);
 			
 			while(rs.next()) {
-				transactionsls.add(new Transactions(rs.getTimestamp(1), rs.getInt(2), rs.getString(3), rs.getDouble(4), rs.getDouble(5)));
+				transactionsls.add(new Transactions(rs.getInt(1) , rs.getTimestamp(2), rs.getInt(3), rs.getString(4), rs.getInt(5), rs.getDouble(6)));
 			}
 			
 			return transactionsls;
@@ -53,7 +55,7 @@ public class TransactionsDaoDB implements TransactionsDao{
 				trans.setTimestamp(rs.getTimestamp(2));
 				trans.setAccountNum(rs.getInt(3));
 				trans.setTransactionType(rs.getString(4));
-				trans.setTransAmount(rs.getDouble(5));
+				trans.setTransAmount(rs.getInt(5));
 				trans.setAccountBal(rs.getDouble(6));
 				
 			}
@@ -67,18 +69,33 @@ public class TransactionsDaoDB implements TransactionsDao{
 		
 		return null;
 	}
-
 	@Override
-	public Transactions makeDeposit(int accountNum, double deposit) {
-		Transactions trans = new Transactions(accountNum , deposit);
-
-		double balance = 
-			accountNum = trans.getAccountNum();
-			balance = balance += deposit;
-//			deposit = trans.getPrevTransaction();
+	public void logTransaction(Transactions t) {
 		
+		try {
+			Connection con = conUtil.getConnection();
+			
+			String sql = "INSERT INTO transactions(transaction_num, time_stamp, account_num, transaction_type, transaction_amount, account_balance) values"
+					+ "(?,?,?,?,?,?)";
+			
+			PreparedStatement ps = con.prepareStatement(sql);
 		
-		return null;
-	}	
-	
+				ps.setInt(1, t.getTransactionNum());
+				ps.setTimestamp(2, t.getTimestamp());
+				ps.setInt(3, t.getAccountNum());
+				ps.setString(4, t.getTransactionType());
+				ps.setInt(5, t.getTransAmount());
+				ps.setDouble(6, t.getAccountBal());
+				
+				ps.execute();
+				
+			
+		} catch(SQLException e) {
+			
+			e.printStackTrace();
+			
+		}
+		
+	}
+*/
 }

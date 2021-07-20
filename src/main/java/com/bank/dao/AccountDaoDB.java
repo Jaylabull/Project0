@@ -10,6 +10,7 @@ import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.bank.logging.Logging;
 import com.bank.models.Account;
 import com.bank.models.Transactions;
 import com.bank.models.User;
@@ -49,10 +50,9 @@ public class AccountDaoDB implements AccountDao{
 				Account ac = new Account(rs.getInt(1) ,rs.getInt(2), rs.getInt(3), rs.getString(4));
 				accountList.add(0, ac);
 			}
-//			u.setAccountNum(accountList);
 			u.setAccount(accountList);
 			con.setAutoCommit(true);
-			return (Account) accountList.get(1);
+			return (Account) accountList.get(0);
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -101,16 +101,39 @@ public void createAccount(Account a) throws SQLException {
 	}
 
 
-	@Override
-	public void updateAccount(Account a) throws SQLException {
+
+	public void makeDeposit(User u, int deposit) {
+		Account a = new Account();
 		try {	
 			Connection con = conUtil.getConnection();
-			String sql = "UPDATE * FROM accounts WHERE transactions.account_balance =?";
+			
+			String sql = "UPDATE accounts SET current_balance = ? WHERE customer_id =?";
 			PreparedStatement ps = con.prepareStatement(sql);
 			
-			ps.setDouble(1, a.getAccountNum());
-			
+			ps.setInt(1, deposit + a.getCurrentBal());
+			ps.setInt(2, a.getCustomerID());
 			ps.execute();
+			
+			Logging.logger.info("Your deposit has been processed.");
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void makeWithdrawl(User u, int deposit) {
+		Account a = new Account();
+		try {	
+			Connection con = conUtil.getConnection();
+			
+			String sql = "UPDATE accounts SET current_balance = ? WHERE customer_id =?";
+			PreparedStatement ps = con.prepareStatement(sql);
+			
+			ps.setInt(1, deposit - a.getCurrentBal());
+			ps.setInt(2, a.getCustomerID());
+			ps.execute();
+			
+			Logging.logger.info("Your deposit has been processed.");
 			
 		} catch(SQLException e) {
 			e.printStackTrace();

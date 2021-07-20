@@ -4,25 +4,26 @@ import java.sql.Timestamp;
 
 
 public class Transactions {
-
+/*
+	private int transactionNum;
 	private Timestamp timestamp;
 	private int accountNum;
 	private String transactionType;
-	private double transAmount;
+	private int transAmount;
 	private double accountBal;
-	private double prevTransaction;
 
 	
 	public Transactions() {
 		
 	}
 	
-	public Transactions(int accountNum, double transAmount) {
+	public Transactions(int accountNum, int transAmount) {
 		this.accountNum = accountNum;
 		this.transAmount = transAmount;
 	}
 	
-	public Transactions(Timestamp timestamp, int accountNum, String transactionType, double transAmount, double accountBal) {
+	public Transactions(int transactionNum, Timestamp timestamp, int accountNum, String transactionType, int transAmount, double accountBal) {
+		this.transactionNum = transactionNum;
 		this.timestamp = timestamp ;
 		this.accountNum = accountNum;
 		this.transactionType = transactionType;
@@ -30,6 +31,14 @@ public class Transactions {
 		this.accountBal = accountBal;
 	}
 
+
+	public int getTransactionNum() {
+		return transactionNum;
+	}
+
+	public void setTransactionNum(int transactionNum) {
+		this.transactionNum = transactionNum;
+	}
 
 	public Timestamp getTimestamp() {
 		return timestamp;
@@ -50,12 +59,12 @@ public class Transactions {
 	}
 
 
-	public double getTransAmount() {
+	public int getTransAmount() {
 		return transAmount;
 	}
 
 
-	public void setTransAmount(double transAmount) {
+	public void setTransAmount(int transAmount) {
 		this.transAmount = transAmount;
 	}
 
@@ -76,21 +85,14 @@ public class Transactions {
 	public void setTransactionType(String transactionType) {
 		this.transactionType = transactionType;
 	}
-	
-	public double getPrevTransaction() {
-		return prevTransaction;
-	}
-
-	public void setPrevTransaction(double prevTransaction) {
-		this.prevTransaction = prevTransaction;
-	}
-
 
 	@Override
 	public String toString() {
-		return "Transactions [timestamp=" + timestamp + ", accountNum=" + accountNum + ", transactionType="
-				+ transactionType + ", transAmount=" + transAmount + ", accountBal=" + accountBal + "]";
+		return "Transactions [transactionNum=" + transactionNum + ", timestamp=" + timestamp + ", accountNum="
+				+ accountNum + ", transactionType=" + transactionType + ", transAmount=" + transAmount + ", accountBal="
+				+ accountBal + "]";
 	}
+	*/
 	
 	
 }//End Transactions class

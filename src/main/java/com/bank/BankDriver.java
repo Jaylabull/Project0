@@ -25,8 +25,6 @@ public class BankDriver {
 	private static UserService uServ = new UserService(uDao);
 	private static AccountDao aDao = new AccountDaoDB();
 	private static AccountServices aServ = new AccountServices(aDao);
-	private static TransactionsDao tDao = new TransactionsDaoDB();
-	private static TransactionServices tServ = new TransactionServices(tDao);
 	static Account a;
 	static User u;
 	static Transactions t;
@@ -152,16 +150,22 @@ public class BankDriver {
 						//Make a deposit
 						System.out.println("Please enter your Account Number for Deposit: ");
 						System.out.println("Accounts: " + aDao.getAccountByUser(u).getAccountNum());
-						int acctNum = Integer.parseInt(in.nextLine());
 						System.out.println("Please enter an amount you would like to deposit: ");
 						int deposit = Integer.parseInt(in.nextLine());
 						System.out.println("Deposit amount: $" + deposit);
-						tServ.makeDeposit(acctNum, deposit);
+						aDao.makeDeposit(u, deposit);
 						System.out.println("Your new account balance is: $" + aDao.getAccountByUser(u).getCurrentBal() + "\n");
 						break;
 					case 4:
 						//make withdrawal method
-						break; 
+						System.out.println("Please enter your Account Number for Deposit: ");
+						System.out.println("Accounts: " + aDao.getAccountByUser(u).getAccountNum());
+						System.out.println("Please enter an amount you would like to deposit: ");
+						int withdrawal = Integer.parseInt(in.nextLine());
+						System.out.println("Deposit amount: $" + withdrawal);
+						aDao.makeDeposit(u, withdrawal);
+						System.out.println("Your new account balance is: $" + aDao.getAccountByUser(u).getCurrentBal() + "\n");
+						break;
 					case 5:
 						//make transfer method
 						break;

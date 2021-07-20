@@ -16,7 +16,7 @@ public interface AccountDao {
 	
 	 void deleteAccount(Account a);
 
-	 void updateAccount(Account a) throws SQLException;
+	 public void makeDeposit(User u, int deposit);
 
 	 Account getAccountByUser(User u);
 
