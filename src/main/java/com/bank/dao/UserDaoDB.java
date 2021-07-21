@@ -46,8 +46,7 @@ public class UserDaoDB implements UserDao{
 			Connection con = conUtil.getConnection();
 			
 			String sql = "SELECT * FROM users WHERE users.username = '" + userName + "'";
-//			Statement s = con.createStatement();
-//			ResultSet rs = s.executeQuery(sql);
+
 			PreparedStatement ps = con.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
 			

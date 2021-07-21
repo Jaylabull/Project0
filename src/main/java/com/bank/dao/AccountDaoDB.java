@@ -134,6 +134,16 @@ public void createAccount(Account a) throws SQLException {
 			ps.setInt(2, u.getId());
 			ps.execute();
 			
+			String sql2 = "INSERT INTO transactions(account_num, transaction_type, transaction_amount, account_balance)"
+					+ "VALUES (?,?,?,?)";
+			PreparedStatement ps2 = con.prepareStatement(sql2);
+			ps2.setLong(1, a.getAccountNum());
+			ps2.setString(2, "Withdrawal");
+			ps2.setInt(3, deposit);
+			ps2.setInt(4, a.getCurrentBal());
+			
+			ps2.executeUpdate();
+			
 			Logging.logger.info("Your deposit has been processed.");
 			
 		} catch(SQLException e) {
@@ -192,7 +202,18 @@ public void createAccount(Account a) throws SQLException {
 						
 						ps4.executeUpdate();
 						
+						String sql5 = "INSERT INTO transactions(account_num, transaction_type, transaction_amount, account_balance)"
+								+ "VALUES (?,?,?,?)";
+						PreparedStatement ps5 = con.prepareStatement(sql5);
+						ps5.setString(1, acctNum);
+						ps5.setString(2, "Transfer");
+						ps5.setInt(3, transferAmt);
+						ps5.setInt(4, acctBalance);
+						
+						ps5.executeUpdate();
+						
 						System.out.println("Your transfer has been processed.");
+						Logging.logger.info("Your transfer has been processed.");
 						
 					}else {
 						System.out.println("The account you want to transfer to does not exist.");

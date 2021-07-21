@@ -15,6 +15,7 @@ public class User {
 	private String email;
 	private String password;
 	private List<Account> account;
+	private boolean Employee;
 	
 	public User() {
 		account = new ArrayList<Account>(); 
@@ -52,6 +53,17 @@ public class User {
 		this.password = password;
 		this.account = new ArrayList<Account>();
 	}
+
+	
+	public boolean isEmployee() {
+		return Employee = true;
+	}
+
+
+	public void setEmployee(boolean employee) {
+		Employee = employee;
+	}
+
 
 	public int getId() {
 		return id;

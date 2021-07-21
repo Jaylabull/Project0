@@ -39,6 +39,21 @@ public class BankDriver {
 		System.out.println();
 		System.out.println("********************");
 		
+//		System.out.println("1. Employee Login or SignUp\n2. New or Current User");
+//		int uChoice = Integer.parseInt(in.nextLine());
+//	if(uChoice == 1) {
+//		
+//		u.setEmployee(true);
+//		System.out.println("Welcome to the J&B Bank Team!");
+//		System.out.println("What would you like to do?\n");
+//		System.out.println("1. View Users Account \n"
+//				+ "2. View Transactions Log\n"
+//				+ "3. Logout");
+//		
+//	}else {
+//	System.out.println("idk yet");
+//	}
+	
 		//Boolean used to control loop
 		boolean done = false;
 		
@@ -64,7 +79,7 @@ public class BankDriver {
 						u = uServ.signIn(username, password);
 						System.out.println("\n");
 						System.out.println("Welcome " + u.getFirstName() + "!");
-						//Add switch for customer options: ie. view balance, create account
+						
 						
 					} catch (Exception e) {
 						System.out.println("Username or password was incorrect. Goodbye");
@@ -162,7 +177,6 @@ public class BankDriver {
 					case 4:
 						//make withdrawal method
 						System.out.println("Please enter your Account Number for Deposit: ");
-//						System.out.println("Accounts: " + aDao.getAccountByUser(u).getAccountNum());
 						
 						System.out.println("Please enter an amount you would like to deposit: ");
 						int withdrawal = Integer.parseInt(in.nextLine());
@@ -188,7 +202,7 @@ public class BankDriver {
 					
 			}//End While loop
 				
-		System.out.println("Goodbye.");
+		System.out.println("Thank you from banking with us. Come again soon!");
 		in.close();
 		}//End Main Method
 		
@@ -199,33 +213,4 @@ public class BankDriver {
 
 
 
-//TESTING DATABASE CONNECTION, UserDao, and UserService methods
-
-//uServ.signIn("JaylaBull7427", "password");
-//uServ.signUp("Jayla", "Bull", "jb@mail.com", "password");
-//System.out.println(uDao.getUserByUsername("JaylaBull7427"));
-//User u = uDao.getUserByUsername("JaylaBull5536");
-//
-//uDao.deleteUser(u);
-
-
-//UserDao uDao = new UserDaoDB();
-
-//uServ.signUp("Jayla", "Bull", "jb@mail.com", "password");
-
-//a = aServ.createAccount(4497, 50, "CHECKING");
-
-
-
-//TESTING getAccountByUser() from aDao -> returns null
-//		Account ac = new Account();
-//		
-//		aDao.getAccountByUser(ac);
-//	
-//		System.out.println(aDao.getAllAccounts());
-
-//TESTING createAccount() in aServ
-//Account ac = new Account();
-//
-//aServ.createAccount(4497, 50, "SAVINGS");
 
