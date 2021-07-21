@@ -123,7 +123,7 @@ public void createAccount(Account a) throws SQLException {
 	}
 
 	public void makeWithdrawl(User u, int deposit) {
-		Account a = new Account();
+		Account a = getAccountByUser(u);
 		try {	
 			Connection con = conUtil.getConnection();
 			
@@ -134,17 +134,17 @@ public void createAccount(Account a) throws SQLException {
 			ps.setInt(2, u.getId());
 			ps.execute();
 			
-			String sql2 = "INSERT INTO transactions(account_num, transaction_type, transaction_amount, account_balance)"
-					+ "VALUES (?,?,?,?)";
-			PreparedStatement ps2 = con.prepareStatement(sql2);
-			ps2.setLong(1, a.getAccountNum());
-			ps2.setString(2, "Withdrawal");
-			ps2.setInt(3, deposit);
-			ps2.setInt(4, a.getCurrentBal());
+//			String sql2 = "INSERT INTO transactions(account_num, transaction_type, transaction_amount, account_balance)"
+//					+ "VALUES (?,?,?,?)";
+//			PreparedStatement ps2 = con.prepareStatement(sql2);
+//			ps2.setLong(1, a.getAccountNum());
+//			ps2.setString(2, "Withdrawal");
+//			ps2.setInt(3, deposit);
+//			ps2.setInt(4, a.getCurrentBal());
+//			
+//			ps2.executeUpdate();
 			
-			ps2.executeUpdate();
-			
-			Logging.logger.info("Your deposit has been processed.");
+			Logging.logger.info("Your withdrawal has been processed.");
 			
 		} catch(SQLException e) {
 			e.printStackTrace();
@@ -213,6 +213,7 @@ public void createAccount(Account a) throws SQLException {
 						ps5.executeUpdate();
 						
 						System.out.println("Your transfer has been processed.");
+						
 						Logging.logger.info("Your transfer has been processed.");
 						
 					}else {

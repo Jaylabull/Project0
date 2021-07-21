@@ -190,3 +190,20 @@
 2021-07-20 23:32:03 INFO  Logging:206 - Your transfer has been processed.
 2021-07-21 01:52:03 INFO  Logging:46 - User was logged in.
 2021-07-21 01:52:21 INFO  Logging:46 - User was logged in.
+2021-07-21 08:22:29 INFO  Logging:23 - New user has registered.
+2021-07-21 08:24:48 INFO  Logging:46 - User was logged in.
+2021-07-21 08:27:24 INFO  Logging:26 - Your account has been created.
+2021-07-21 08:28:06 INFO  Logging:26 - Your account has been created.
+2021-07-21 08:33:17 INFO  Logging:46 - User was logged in.
+2021-07-21 08:35:01 INFO  Logging:46 - User was logged in.
+2021-07-21 08:38:02 INFO  Logging:46 - User was logged in.
+2021-07-21 08:39:22 INFO  Logging:23 - New user has registered.
+2021-07-21 08:40:29 INFO  Logging:26 - Your account has been created.
+2021-07-21 08:43:02 INFO  Logging:118 - Your deposit has been processed.
+2021-07-21 08:44:20 INFO  Logging:118 - Your deposit has been processed.
+2021-07-21 08:46:20 WARN  Logging:38 - User tried loggging in that does not exist.
+2021-07-21 08:46:48 WARN  Logging:38 - User tried loggging in that does not exist.
+2021-07-21 08:47:56 INFO  Logging:46 - User was logged in.
+2021-07-21 08:48:09 INFO  Logging:118 - Your deposit has been processed.
+2021-07-21 08:49:22 INFO  Logging:46 - User was logged in.
+2021-07-21 08:49:31 INFO  Logging:118 - Your deposit has been processed.

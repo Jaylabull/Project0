@@ -30,7 +30,7 @@ public class BankDriver {
 	static Transactions t;
 	
 	public static void main(String[] args) throws SQLException {
-		
+	
 	
 		Scanner in = new Scanner(System.in);
 		System.out.println("********************");
@@ -96,7 +96,7 @@ public class BankDriver {
 						String password = in.nextLine();
 						try {
 							u = uServ.signUp(first, last, email, password);
-							System.out.println("You man now login with the username:  " + u.getUserName());
+							System.out.println("You may now login with the username:  " + u.getUserName());
 						} catch (Exception e) {
 							System.out.println("Sorry, we could not process you request.");
 							System.out.println("Please try again later.");
@@ -119,6 +119,9 @@ public class BankDriver {
 				switch(choice) {
 					case 1:
 						//View balance
+						System.out.println("Accounts: " + aDao.getAccountByUser(u).getAccountNum());
+						
+						
 						System.out.println("Your current balance for your account is: $ " + aDao.getAccountByUser(u).getCurrentBal());
 						break;
 					case 2:
@@ -128,7 +131,7 @@ public class BankDriver {
 						int id = Integer.parseInt(in.nextLine());
 						
 						System.out.println("Please enter the type of account you would like to create:\nCHECKINGS"
-								+ " or\n SAVINGS");
+								+ " or\nSAVINGS");
 							String acctType = in.nextLine().toUpperCase();
 							
 								if(!"CHECKINGS".equals(acctType) && !"SAVINGS".equals(acctType)) {
@@ -163,9 +166,8 @@ public class BankDriver {
 						break;
 					case 3:
 						//Make a deposit
-						System.out.println("Please enter your Account Number for Deposit: ");
-						
 						System.out.println("Accounts: " + aDao.getAccountByUser(u).getAccountNum());
+						
 						System.out.println("Please enter an amount you would like to deposit: ");
 						int deposit = Integer.parseInt(in.nextLine());
 						
@@ -176,13 +178,11 @@ public class BankDriver {
 						break;
 					case 4:
 						//make withdrawal method
-						System.out.println("Please enter your Account Number for Deposit: ");
-						
-						System.out.println("Please enter an amount you would like to deposit: ");
+						System.out.println("Please enter an amount you would like to withdrawal: ");
 						int withdrawal = Integer.parseInt(in.nextLine());
 						
-						System.out.println("Deposit amount: $" + withdrawal);
-						aDao.makeDeposit(u, withdrawal);
+						System.out.println("Withdrawal amount: $" + withdrawal);
+						aDao.makeWithdrawl(u, withdrawal);
 						
 						System.out.println("Your new account balance is: $" + aDao.getAccountByUser(u).getCurrentBal() + "\n");
 						break;
@@ -204,6 +204,7 @@ public class BankDriver {
 				
 		System.out.println("Thank you from banking with us. Come again soon!");
 		in.close();
+		
 		}//End Main Method
 		
 	
