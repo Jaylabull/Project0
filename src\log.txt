@@ -174,3 +174,11 @@
 2021-07-20 16:55:10 INFO  Logging:46 - User was logged in.
 2021-07-20 17:00:46 INFO  Logging:46 - User was logged in.
 2021-07-20 17:17:49 INFO  Logging:46 - User was logged in.
+2021-07-20 17:24:49 INFO  Logging:23 - New user has registered.
+2021-07-20 17:25:05 INFO  Logging:26 - Your account has been created.
+2021-07-20 17:25:34 INFO  Logging:26 - Your account has been created.
+2021-07-20 17:28:54 INFO  Logging:46 - User was logged in.
+2021-07-20 22:09:32 INFO  Logging:46 - User was logged in.
+2021-07-20 22:20:37 INFO  Logging:46 - User was logged in.
+2021-07-20 22:21:47 INFO  Logging:46 - User was logged in.
+2021-07-20 22:30:19 INFO  Logging:46 - User was logged in.

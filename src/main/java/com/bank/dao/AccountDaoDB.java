@@ -28,8 +28,6 @@ public class AccountDaoDB implements AccountDao{
 		return null;
 	}
 	
-
-
 @Override
 	public Account getAccountByUser(User u) {
 		List<Account> accountList = new ArrayList<Account>();
@@ -149,7 +147,7 @@ public void createAccount(Account a) throws SQLException {
 		String acctNum = in.nextLine();
 		
 		System.out.println("Enter the amount you would like to transfer: ");
-		int transferAmt = in.nextInt();
+		int transferAmt = Integer.parseInt(in.nextLine());
 		
 		if(transferAmt > 0) {
 			
@@ -189,14 +187,13 @@ public void createAccount(Account a) throws SQLException {
 						String sql4 = "UPDATE accounts SET current_balance =? WHERE account_number = ?";
 						
 						PreparedStatement ps4 = con.prepareStatement(sql4);
-						ps3.setInt(1, acctBalance + transferAmt);
-						ps3.setString(2, toAcctNum);
+						ps4.setInt(1, acctBalance + transferAmt);
+						ps4.setString(2, toAcctNum);
 						
-						ps3.executeUpdate();
+						ps4.executeUpdate();
 						
 						System.out.println("Your transfer has been processed.");
 						
-					
 					}else {
 						System.out.println("The account you want to transfer to does not exist.");
 					}
