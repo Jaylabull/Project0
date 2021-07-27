@@ -9,7 +9,7 @@ A console based application that represents a bank. The purpose of this project 
 
 To show an associates ability to complete a project and meet deadlines. Also required to present a fucntional project to the QC team. 
 
-## Used Programs:
+## Technologies:
 
 `Java 8`
 `PostgreSQL`
